@@ -1,0 +1,194 @@
+# ============================================================
+# coffee_shop.skin — Reference (base) skin
+# Uses as many fields and directives as possible.
+# Variant skins can omit sections/fields freely.
+# ============================================================
+
+# --- Header: Logo & Store Identity ---
+@align:center
+@if:store.logo_path
+@image:{{store.logo_path}}
+@endif
+
+@if:store.logo_text
+@bold:on
+@size:double
+{{store.logo_text}}
+@size:normal
+@bold:off
+@endif
+
+@bold:on
+@size:double
+{{store.name}}
+@size:normal
+@bold:off
+
+@if:store.address
+{{store.address}}
+@endif
+@if:store.phone
+Tel. {{store.phone}}
+@endif
+@if:store.website
+{{store.website}}
+@endif
+
+@blank
+@align:left
+@if:store.business_number
+Biz No. {{store.business_number}}
+@endif
+@if:store.owner_name
+Owner: {{store.owner_name}}
+@endif
+
+@divider
+@blank
+
+# --- Meta info ---
+@if:meta.receipt_number
+Receipt #{{meta.receipt_number}}
+@endif
+@if:meta.timestamp
+{{meta.timestamp}}
+@endif
+@if:meta.cashier
+Cashier: {{meta.cashier}}
+@endif
+@if:meta.order_type
+Order type: {{meta.order_type}}
+@endif
+@if:meta.table_number
+Table: {{meta.table_number}}
+@endif
+
+@divider
+@blank
+
+# --- Items ---
+@foreach:items as item
+  @match:item.item_type
+  @case:bundle
+    @if:item.price
+    @bold:on
+    @row:{{item.name}}|{{item.price}} {{computed.currency}}
+    @bold:off
+    @else
+    @bold:on
+    {{item.name}}
+    @bold:off
+    @endif
+    @if:item.note
+    ({{item.note}})
+    @endif
+  @case:discount
+    {{item.name}}: -{{item.price}} {{computed.currency}}
+  @case:normal
+    @if:item.emphasis
+    @bold:on
+    @endif
+    @if:item.strikethrough
+    [X] {{item.name}}
+    @else
+    @row:{{item.name}} x{{item.quantity}}|{{item.price}} {{computed.currency}}
+    @endif
+    @if:item.emphasis
+    @bold:off
+    @endif
+    @if:item.note
+      ({{item.note}})
+    @endif
+  @endmatch
+
+  # Recursive: bundle members / sub-items / options
+  @if:item.children
+  @foreach:item.children as child
+    @if:child.price
+    @row:-- {{child.name}}|{{child.price}} {{computed.currency}}
+    @else
+    -- {{child.name}}
+    @endif
+  @endforeach
+  @endif
+
+  @blank
+@endforeach
+
+@divider
+@blank
+
+# --- Computed aggregates (only shown when CLI flags are set) ---
+@if:computed.sum
+@align:right
+Subtotal: {{computed.sum}} {{computed.currency}}
+@endif
+
+@if:computed.tax
+@align:right
+@if:computed.tax_mode_inclusive
+(incl. VAT {{computed.tax}} {{computed.currency}})
+@else
+Tax ({{computed.tax_rate}}%): {{computed.tax}} {{computed.currency}}
+@endif
+@endif
+
+@if:computed.discount
+@align:right
+Discount: -{{computed.discount}} {{computed.currency}}
+@endif
+
+@if:computed.service_charge
+@align:right
+Service charge: {{computed.service_charge}} {{computed.currency}}
+@endif
+
+@if:computed.average
+@align:right
+Average/item: {{computed.average}} {{computed.currency}}
+@endif
+
+@if:computed.item_count
+@align:right
+Items: {{computed.item_count}}
+@endif
+
+@if:computed.total
+@blank
+@bold:on
+@size:double
+@align:right
+TOTAL: {{computed.total}} {{computed.currency}}
+@size:normal
+@bold:off
+@endif
+
+@align:left
+
+# --- Store QR (menu / website) ---
+@if:store.qr_content
+@blank
+@blank
+@blank
+@align:center
+@qr:{{store.qr_content}}
+@endif
+
+@blank
+
+# --- Footer (CLI --footer-text entries, in order) ---
+@foreach:footer as line
+  @align:center
+  @match:line.kind
+  @case:qr
+    @qr:{{line.content}}
+  @case:text
+    {{line.content}}
+  @endmatch
+@endforeach
+
+@blank
+@align:center
+Thank you!
+
+@cut

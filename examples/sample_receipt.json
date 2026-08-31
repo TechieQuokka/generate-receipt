@@ -1,0 +1,30 @@
+{
+  "store": {
+    "name": "Blue Bean Coffee",
+    "address": "123 Main St, Seoul",
+    "phone": "02-1234-5678",
+    "business_number": "123-45-67890",
+    "owner_name": "Jane Doe",
+    "website": "https://bluebean.example.com",
+    "logo_text": "BLUE BEAN",
+    "logo_path": null,
+    "qr_content": "https://bluebean.example.com/menu"
+  },
+  "meta": {
+    "receipt_number": "0001",
+    "cashier": "David"
+  },
+  "items": [
+    {
+      "name": "Americano",
+      "price": 4000,
+      "quantity": 2
+    },
+    {
+      "name": "Latte",
+      "price": 4500,
+      "quantity": 1,
+      "emphasis": true
+    }
+  ]
+}

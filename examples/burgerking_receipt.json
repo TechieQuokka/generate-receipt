@@ -1,0 +1,133 @@
+{
+  "store": {
+    "name": "Burger King",
+    "address": "45 Gangnam-daero, Seoul",
+    "phone": "02-9876-5432",
+    "business_number": "987-65-43210",
+    "owner_name": "John Smith",
+    "website": "https://burgerking.example.com",
+    "logo_text": "BURGER KING",
+    "logo_path": null,
+    "qr_content": "https://burgerking.example.com/app-coupon"
+  },
+  "meta": {
+    "receipt_number": "0087",
+    "cashier": "Alex",
+    "order_type": "Dine-in",
+    "table_number": "12"
+  },
+  "items": [
+    {
+      "id": "set1",
+      "name": "Whopper Set",
+      "price": 8900,
+      "quantity": 1,
+      "item_type": "bundle",
+      "note": "Combo",
+      "children": [
+        { "name": "Whopper Burger", "price": null },
+        { "name": "Coke (Medium) -> Zero Coke", "price": null },
+        { "name": "Fries (Medium) -> Onion Rings", "price": 700 },
+        { "name": "Drink Size Up (Large)", "price": 500 }
+      ]
+    },
+    {
+      "id": "set2",
+      "name": "Bulgogi Whopper Set",
+      "price": 8500,
+      "quantity": 2,
+      "item_type": "bundle",
+      "note": "Combo x2",
+      "children": [
+        { "name": "Bulgogi Whopper Burger", "price": null },
+        { "name": "Coke (Medium)", "price": null },
+        { "name": "Fries (Medium)", "price": null },
+        { "name": "Extra Bulgogi Sauce", "price": 300 }
+      ]
+    },
+    {
+      "id": "set3",
+      "name": "Chicken Fries Set",
+      "price": 7900,
+      "quantity": 1,
+      "item_type": "bundle",
+      "note": "Combo",
+      "children": [
+        { "name": "Chicken Fries (9pcs)", "price": null },
+        { "name": "Sprite (Medium)", "price": null },
+        { "name": "Fries (Medium)", "price": null },
+        { "name": "Honey Mustard Dip", "price": 200 },
+        { "name": "Hot Sauce Dip", "price": 200 }
+      ]
+    },
+    {
+      "name": "Original Chicken Sandwich",
+      "price": 6900,
+      "quantity": 1,
+      "note": "No pickles",
+      "item_type": "normal"
+    },
+    {
+      "name": "Spicy Chicken Nuggets (10pcs)",
+      "price": 5500,
+      "quantity": 1,
+      "item_type": "normal"
+    },
+    {
+      "name": "Cheese Sticks (4pcs)",
+      "price": 3900,
+      "quantity": 2,
+      "note": "Side"
+    },
+    {
+      "name": "Onion Rings (Large)",
+      "price": 3500,
+      "quantity": 1,
+      "note": "Side"
+    },
+    {
+      "name": "Coleslaw",
+      "price": 2500,
+      "quantity": 1,
+      "note": "Side"
+    },
+    {
+      "name": "Sundae Ice Cream",
+      "price": 1900,
+      "quantity": 2,
+      "note": "Dessert"
+    },
+    {
+      "name": "Zero Coke (Large)",
+      "price": 2500,
+      "quantity": 1,
+      "item_type": "normal"
+    },
+    {
+      "name": "Extra BBQ Sauce Cup",
+      "price": 500,
+      "quantity": 3,
+      "strikethrough": true,
+      "note": "Out of stock - removed"
+    },
+    {
+      "name": "Bacon Add-on",
+      "price": 1000,
+      "quantity": 1,
+      "emphasis": true,
+      "note": "Whopper upgrade"
+    },
+    {
+      "name": "Membership App Discount",
+      "price": 1500,
+      "quantity": 1,
+      "item_type": "discount"
+    },
+    {
+      "name": "Birthday Coupon",
+      "price": 3000,
+      "quantity": 1,
+      "item_type": "discount"
+    }
+  ]
+}
